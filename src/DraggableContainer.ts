@@ -156,6 +156,7 @@ export class DraggableContainer implements IDockContainer {
         if (event.preventDefault)
             event.preventDefault();
 
+
         let currentMousePosition = new Point(event.clientX, event.clientY);
         if (iframeOffset)
             currentMousePosition = new Point(event.clientX + iframeOffset.x, event.clientY + iframeOffset.y);
@@ -167,10 +168,11 @@ export class DraggableContainer implements IDockContainer {
     }
 
     _performDrag(dx: number, dy: number) {
+        //console.dir([dx, dy]);
         let left = dx + Utils.getPixels(this.topLevelElement.style.left);
         let top = dy + Utils.getPixels(this.topLevelElement.style.top);
-        this.topLevelElement.style.left = left + 'px';
-        this.topLevelElement.style.top = top + 'px';
+        this.topLevelElement.style.left = left.toFixed(3) + 'px';
+        this.topLevelElement.style.top = top.toFixed(3) + 'px';
 
         this.dialog.panel.setDialogPosition(left, top);
     }

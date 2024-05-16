@@ -9,6 +9,8 @@ export class Utils {
             return 0;
         }
 
+        return parseFloat(pixels);
+
         return parseInt(pixels.replace('px', ''));
     }
 
